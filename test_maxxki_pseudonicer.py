@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-MAXXKI PII Pseudonicer v5.1 — Test Suite
+MAXXKI PII Pseudonicer v5.3 — Test Suite
 """
 
 import json

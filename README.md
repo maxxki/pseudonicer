@@ -245,6 +245,14 @@ echo ""
 echo "=== BEREINIGT (Auszug) ==="
 head -50 dokument_clean.txt
 
+oder:
+
+echo ""
+echo "=== Alle Platzhalter im bereinigten Text ==="
+grep -o '\[[A-Z_]*_[0-9]*_[a-f0-9]*\]' dokument_clean.txt | sort -u
+
+-------
+
 
 
 Version

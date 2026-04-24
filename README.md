@@ -168,6 +168,85 @@ Dateiübersicht
   settings.json                Fertige Claude Code Konfiguration
 
 
+
+Beispiel:
+------------------
+
+cat > dokument.txt << 'EOF'
+KUNDENANFRAGE - Vertraulich
+
+Sehr geehrter Herr Dr. Thomas Schmidt,
+
+vielen Dank für Ihre Anfrage vom 15.03.2024. 
+Wir haben folgende Daten von Ihnen erfasst:
+
+---
+Persönliche Daten:
+- Name: Thomas Schmidt
+- Geburtsdatum: 15.03.1985
+- E-Mail: thomas.schmidt@beispielfirma.de
+- Telefon: +49 911 9876543
+- Mobil: 0151-12345678
+- Steuernummer: 21/815/08150
+---
+
+Bankverbindung:
+IBAN: DE89 3704 0044 0532 0130 00
+BIC: COBADEFFXXX
+Kreditkarte: 4111 1111 1111 1111
+
+---
+Firmendaten:
+Arbeitgeber: Beispielfirma GmbH
+Adresse: Musterstraße 42a, 90403 Nürnberg
+Kennzeichen: N AB 1234
+
+---
+API-Zugang:
+api_key = "sk-abc123def456ghi789jkl012mno345"
+token = "ghp_xyz789abc456def123ghi789jkl456mno"
+
+---
+Server-Infrastruktur:
+IP-Adresse: 192.168.1.100
+Gateway: 10.0.0.1
+
+---
+Notizen aus dem Gespräch mit Frau Anna Weber (weber@example.com):
+"Herr Schmidt wohnt in der Berliner Straße 15 und ist seit 2020 Kunde.
+Die Firma arbeitet mit Python, Docker und Kubernetes auf AWS."
+
+---
+Obfuskierte Daten (Spam-Schutz umgangen):
+Email: m a x @ t e s t . d e
+Telefon: 0 9 1 1 1 2 3 4 5 6 7 8
+
+---
+Viele Grüße
+Ihr Support-Team
+
+PS: Der Kunde nutzt Linux und entwickelt in TypeScript.
+EOF
+
+echo "✅ Testdatei dokument.txt wurde erstellt"
+----------
+
+Jetzt den Pseudonicer:
+
+cat dokument.txt | python3 maxxki_pseudonicer.py > dokument_clean.txt
+
+------
+
+Vergleich (hier 50Zeilen):
+
+echo "=== ORIGINAL (Auszug) ==="
+head -50 dokument.txt
+echo ""
+echo "=== BEREINIGT (Auszug) ==="
+head -50 dokument_clean.txt
+
+
+
 Version
 -------
 

@@ -1,7 +1,4 @@
-#!/usr/bin/env python3
-"""
-MAXXKI PII Pseudonicer v5.3 - All Tests Passing
-Fixes vs v5.2:
+#!/usr/bin/env python3                                """                                                   MAXXKI PII Pseudonicer v5.3 - All Tests Passing       Fixes vs v5.2:
   - IBAN-Regex: trailing-Gruppe {1,4} statt fest {4} (DE89...0130 00 vollständig matchen)
   - IBAN vor PHONE in PII_PATTERNS (Overlap-Resolver bevorzugt längeren Match)
   - PHONE: (?<![A-Z]) verhindert Match innerhalb von IBANs
@@ -89,8 +86,8 @@ PII_PATTERNS: List[Dict] = [
      "pattern": r'(?<![A-Za-zäöüÄÖÜß])(?!(?:Der?|Die|Das|The|Ein[e]?|Und|And|Mit|With|Von|From|Im|In|An|Auf|Bei|Zu)\s)([A-ZÄÖÜ][A-Za-zÄÖÜäöüß\-\.]*(?:\s+(?:[A-ZÄÖÜ][A-Za-zÄÖÜäöüß\-\.]*|&)){0,4}?)\s+(?:GmbH|AG\b|KG\b|OHG\b|GbR\b|UG\b|eG\b|eV\b|Ltd\b|Limited\b|LLC\b|Inc\b|Corp\b|LLP\b)',
      "group": 1},
     {"label": "FULL_NAME",
-     "pattern": r'\b(?:Herr|Frau|Hr\.|Fr\.|Dr\.?|Prof\.?|Mr\.?|Mrs\.?|Ms\.?)\s+([A-ZÄÖÜ][a-zäöüß]+(?:\s+[A-ZÄÖÜ][a-zäöüß]+){0,2})\b',
-     "flags": re.I, "group": 1},
+     "pattern": r'\b(?:Herr|Frau|Hr\.|Fr\.|Dr\.?|Prof\.?|Mr\.?|Mrs\.?|Ms\.?)(?:\s+(?:[A-ZÄÖÜ][a-zA-ZÄÖÜäöüß\.\-]+))+',
+     "flags": re.I, "group": 0},
     {"label": "FULL_NAME",
      "pattern": r'(?:Name|Nachname|Kunde|Client|Customer|User)\s*:?\s*([A-ZÄÖÜ][a-zäöüß]+(?:\s+[A-ZÄÖÜ][a-zäöüß]+){1,2})\b',
      "flags": re.I, "group": 1},

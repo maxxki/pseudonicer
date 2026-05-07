@@ -1,4 +1,4 @@
-MAXXKI PII Pseudonicer v5.3
+MAXXKI PII Pseudonicer v6.0
 ===========================
 
 Was macht das Tool?
@@ -17,22 +17,6 @@ Beispiel:
     "Mein Mandant [FULL_NAME_1_a3f2], IBAN: [IBAN_1_b7c4], Tel: [PHONE_1_d2e1]"
 
 
-Erkannte PII-Kategorien
-------------------------
-
-  FULL_NAME       Max Mustermann, Dr. Anna Schmidt, Frau Prof. Weber
-  EMAIL           max@firma.de, user+tag@domain.org
-  PHONE           +49 911 123456, 0911-123456, 0049 89 12345678
-  IBAN            DE89 3704 0044 0532 0130 00  (mit Prüfsummenvalidierung)
-  BIC             DEUTDEDB
-  CREDIT_CARD     4111 1111 1111 1111  (mit Luhn-Prüfung)
-  TAX_ID          21/815/08150, Steuernummer: 86 815 08150
-  IP_ADDR         192.168.1.100
-  API_KEY         api_key = "sk-abc123...", token = "xyz..."
-  ADDRESS         Musterstraße 42a
-  BIRTHDATE       15.03.1985, geb. 01.01.1980
-  LICENSE_PLATE   M AB 1234
-  COMPANY         Musterfirma GmbH, Beispiel AG, Acme Ltd.
 
 Namen werden erkannt über Anreden (Herr, Frau, Dr., Prof., Mr., Mrs.)
 sowie über Kontext-Labels im Text oder in JSON-Keys (Name, Kunde, User ...).
@@ -150,21 +134,8 @@ Sicherheitshinweise
     technische Schutzschicht.
 
 
-Tests ausführen
----------------
-
-    python3 -m pytest test_maxxki_pseudonicer.py -v
-
-Oder ohne pytest:
-
-    python3 test_maxxki_pseudonicer.py -v
-
-
-Dateiübersicht
---------------
 
   maxxki_pseudonicer.py        Hauptmodul
-  test_maxxki_pseudonicer.py   Test-Suite (40+ Testfälle)
   settings.json                Fertige Claude Code Konfiguration
 
 
@@ -172,7 +143,8 @@ Dateiübersicht
 Beispiel:
 ------------------
 
-cat > dokument.txt << 'EOF'
+nano dokument.txt
+
 KUNDENANFRAGE - Vertraulich
 
 Sehr geehrter Herr Dr. Thomas Schmidt,
@@ -226,36 +198,15 @@ Viele Grüße
 Ihr Support-Team
 
 PS: Der Kunde nutzt Linux und entwickelt in TypeScript.
-EOF
-
-echo "✅ Testdatei dokument.txt wurde erstellt"
 ----------
 
 Jetzt den Pseudonicer:
 
 cat dokument.txt | python3 maxxki_pseudonicer.py > dokument_clean.txt
 
-------
-
-Vergleich (hier 50Zeilen):
-
-echo "=== ORIGINAL (Auszug) ==="
-head -50 dokument.txt
-echo ""
-echo "=== BEREINIGT (Auszug) ==="
-head -50 dokument_clean.txt
-
-oder:
-
-echo ""
-echo "=== Alle Platzhalter im bereinigten Text ==="
-grep -o '\[[A-Z_]*_[0-9]*_[a-f0-9]*\]' dokument_clean.txt | sort -u
-
--------
-
 
 
 Version
 -------
 
-v5.3 – Alle Tests bestanden.
+v6.0

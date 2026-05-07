@@ -27,7 +27,7 @@ Obfuskierte PII werden ebenfalls erkannt:
 
 
 Installation als Claude Code Hook
------------------------------------
+----
 
 Schritt 1: Datei ablegen
 
@@ -57,7 +57,7 @@ nur dass PII vorher herausgefiltert wird.
 
 
 Hinweis zum Hintergrundverhalten
-----------------------------------
+---
 
 Das Script startet nicht sichtbar und "hängt" nicht. Es wird von Claude Code
 bei Bedarf aufgerufen, verarbeitet den Text in Millisekunden und beendet sich
@@ -69,7 +69,7 @@ Strg+C beenden. Für den Hook-Betrieb ist das irrelevant.
 
 
 Standalone-Nutzung (optional)
-------------------------------
+---
 
 Einzelnen Text pseudonymisieren:
 
@@ -94,7 +94,7 @@ Interner Selbsttest:
 
 
 Umgebungsvariablen
-------------------
+----
 
   SHOW_TYPE_IN_PLACEHOLDER   (Standard: true)
     true  ->  [EMAIL_1_3a7f]
@@ -110,7 +110,7 @@ Umgebungsvariablen
 
 
 Whitelist
----------
+--
 
 Folgende Begriffe werden nie anonymisiert, auch wenn sie wie ein Name
 oder Firmenname aussehen:
@@ -124,7 +124,7 @@ Die vollständige Liste (TECH_WHITELIST) ist im Quellcode direkt erweiterbar.
 
 
 Sicherheitshinweise
--------------------
+---
 
   - Der Hook greift lokal – PII verlässt das System nie als Klartext.
   - Das Mapping (Platzhalter <-> Original) lebt nur im RAM, kein Logging.
@@ -141,7 +141,7 @@ Sicherheitshinweise
 
 
 Beispiel:
-------------------
+-----
 
 nano dokument.txt
 
